@@ -44,6 +44,7 @@ dev_dependencies:
   pmvvm: ^4.0.1
   bubble: ^1.2.1
   carousel_slider: ^4.2.1
+  flutter_screenutil: ^5.7.0
   mvc_pattern: ^8.11.0
   http: ^0.13.5
   # The "flutter_lints" package below contains a set of recommended lints to

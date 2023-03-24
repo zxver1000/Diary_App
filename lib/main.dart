@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripdiary/login/logInVeiwModel.dart';
+import 'package:tripdiary/login/views/flexibleScreen.dart';
 import 'package:tripdiary/login/views/logInScreen.dart';
 import './views/splash/splash.dart';
 
@@ -9,7 +10,7 @@ import 'dart:convert';
 import 'dart:core';
 import 'dart:io';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class server extends ChangeNotifier{
   var http_server_name;
@@ -58,24 +59,29 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: StreamBuilder(
-        stream: context.watch<loginindex>().streamController.stream,
-        builder: (BuildContext context,snapshot){
-          if(snapshot.data.toString()=="로그인") {
-            //퓨쳐빌
-            return logInScreen();
-          } else{
-            return logInScreen();
-          }
+    return ScreenUtilInit(
+    designSize: const Size(2340,1080),
+    builder: (context,child){
 
-        },
-      ),
-    );
+      return MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: StreamBuilder(
+          stream: context.watch<loginindex>().streamController.stream,
+          builder: (BuildContext context,snapshot){
+            if(snapshot.data.toString()=="로그인") {
+              //퓨쳐빌
+              return logInScreen();
+            } else{
+              return flexsibleLoginScreen();
+            }
+
+          },
+        ),
+      );
+    });
   }
 }
 
